@@ -1,0 +1,45 @@
+######### installing jenkins ########################
+sudo yum install java-1.8.0-openjdk.x86_64 -y
+sudo cp /etc/profile /etc/profile_backup
+echo 'export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk' | sudo tee -a /etc/profile
+echo 'export JRE_HOME=/usr/lib/jvm/jre' | sudo tee -a /etc/profile
+source /etc/profile
+echo $JAVA_HOME
+echo $JRE_HOME
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo firewall-cmd --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+############ install nvm ################
+curl https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+source ~/.bashrc
+nvm --version
+nvm install v6.11.5
+/var/lib/jenkins/.nvm/versions/node/v6.11.5/lib
+
+npm install npm
+
+
+cd public
+~/.nvm/versions/node/v6.11.5/bin/npm install
+~/.nvm/versions/node/v6.11.5/bin/gulp
+
+
+cd client
+~/.nvm/versions/node/v6.11.5/bin/npm install
+~/.nvm/versions/node/v6.11.5/bin/gulp fullBuild
+
+create a tar
+--------------
+  tar cvf client.tar ../client/client_deploy
+create a public tar
+   tar cvf client.tar ../client/client_deploy
+

@@ -1,0 +1,72 @@
+Tasks done
+
+1. monitory addition of 10,000 records 
+
+version caluclating memory occupation of mongod
+
+mongod memory usage in mb
+--------------------------
+
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+mongod_proc_mem=`top -b -n 1| grep -w mongod | tr -s ' ' |cut -d " " -f11`
+echo  $mongod_proc_mem*$total/100 |bc
+
+redis memory usage in mb
+-------------------------
+redis_proc_mem=`top -b -n 1| grep -w redis | tr -s ' ' |cut -d " " -f11`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $redis_proc_mem*$total/100|bc
+
+server.js memory usage in mb
+---------------------------
+server_js_mm=`top -bc n1| grep -w server.js | grep -v grep | tr -s ' ' |cut -d " " -f11`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $server_js_mm*$total/100 | bc
+
+
+app.js memory usage in mb
+----------------------------
+app_js_mem=`top -bc n1| grep  -w app.js | grep -v grep | tr -s ' ' |cut -d " " -f11`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $app_js_mem*$total/100|bc
+
+api_gateway -> index.js in mem  in mb
+--------------------------------------
+api_index_js_mem=`top -bc n1 | grep -w uc_api_gateway | grep -v grep | tr -s ' ' | cut -d " " -f11`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $api_index_js_mem*$total/100 | bc
+
+uc_push_notification -> index.js in mem mb
+------------------------------------------
+uc_push_index_js_mem=`top -bc n1 | grep -w index.js| egrep -v "uc_api|grep" | tr -s`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $uc_push_index_js_mem*$total/100|bc
+
+uc_authentication_server --> server.js in mem mb
+-------------------------------------------------
+ucauth_service_js_mem=`top -bcn1 | grep uc_auth | egrep -v "grep|uc_server" | tr -s ' '| cut -d " " -f11
+echo $ucauth_service_js_mem
+
+nginx_worker
+--------------
+nginxworker_proc_mem=`top -bcn1 | egrep "worker process"| grep -v "grep" | tr -s ' '| cut -d " " -f10`
+total=`free -m | grep -i mem | tr -s ' '|cut -d " " -f2`
+echo $nginxworker_proc_mem*$total/100 |bc
+
+nginx_master
+------------
+nginxmaster_proc_mem=`top -bcn1 | egrep "master process" | grep -v grep | tr -s ' ' | cut -d " " -f10`
+echo $nginxmaster_proc_mem*$total/100|bc
+
+################ tools to monitor resource in graph ########################
+Trend Analysis Software
+There is a lot of software in the open source world that can help do trend analysis with graphs, some of them
+are listed here:
+•	 RRDtool (http://oss.oetiker.ch/rrdtool/)
+•	 Graphite (http://graphite.wikidot.com)
+•	 MRTG (http://oss.oetiker.ch/mrtg/)
+•	 Cacti (http://www.cacti.net)
+•	 Zenoss (http://www.zenoss.com)
+•	 Collectd (https://collectd.org)
+•	 PNP4Nagios (https://docs.pnp4nagios.org/)	
+•	 Nagiosgraph (http://nagiosgraph.sourceforge.net/)

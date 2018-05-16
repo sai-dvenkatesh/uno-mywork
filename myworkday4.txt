@@ -1,0 +1,6 @@
+pollscm bitbucket
+-----------------
+https://stackoverflow.com/questions/11231064/how-do-i-get-jenkins-to-build-on-push-to-a-bitbucket-git-repository
+jenkins zip file as an attachment to email
+-------------------------------------------
+http://czcodezone.blogspot.in/2015/04/jenkins-zip-files-into-email-attachment.html

@@ -1,0 +1,28 @@
+if file created (public,client folders) then take the build folder
+###############
+#!/bin/bash 
+PUBLIC_DEPLOY=public/public_deploy
+CLIENT_DEPLOY=client/client_deploy
+REMOTE_SERVER=192.168.200.108
+REMOTE_USER=ucgitadmin
+if [ -d $PUBLIC_DEPLOY &&  -d $CLIENT_DEPLOY ]
+	then
+tar cJvf public.tar.xz $PUBLIC_DEPLOY
+tar cJvf client.tar.xz $CLIENT_DEPLOY
+scp client.tar.xz public.tar.xz $REMOTE_USER@$REMOTE_SERVER
+ssh  $REMOTE_USER@$REMOTE_SERVER /bin/bash <<HERE
+   if [ ! -d uc_client ]
+       then
+       mkdir uc_client
+        tar xvf client.tar.xz -C uc_client && mv ~/uc_client/client/client_deploy/*  ~/uc_client/client/ && rm -rf ~/uc_client/client/client_deploy
+        tar xvf public.tar.xz -C uc_client && mv ~/uc_client/public/public_deploy/*  ~/uc_client/client/ && rm -rf ~/uc_client/client/public_deploy
+       else
+    exit
+  fi
+HERE
+else
+echo "Build May not be successfull"
+fi
+tar cvf client.tar client/client_deploy
+tar cvf public.tar public/public_deploy
+scp client.tar public.tar ucgitadmin@192.168.200.108:

@@ -1,0 +1,7 @@
+My environment 
+--------------
+1. uc-ci.build.com -> 192.168.200.107
+jenkins server runing on centos-7
+
+2. uc-test-server -> 192.168.200.108
+3. uc-stage-server -> 192.168.200.109

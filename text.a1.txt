@@ -1,0 +1,12 @@
+account creationg @15:30 
+
+
+     cpu   mem
+node 33.6  22.8
+npm 31.2   0.6
+npm  31.0  0.7
+mongod 0.7 3.2
+redis  0.3 0.7
+
+1.sar 2 -u >> a1.cpusar09-05
+2.vmstat 2 >> vmstat.509 ; iostat -xtc 2 >> io.509

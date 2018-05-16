@@ -1,0 +1,18 @@
+Senior Software Engineer Responsbilities
+=========================================
+
+Responsibilities
+Communicate effectively, clearly articulating technical issues, problem incident resolution, readiness status and reporting
+Self-motivated, independent, detail oriented and responsible team player
+Perform retrofits, test and production code deployments enabling daily, weekly, monthly code migration
+Validate deployments and communicate code readiness across stakeholders
+Attend planning meetings, define detailed tasks, participate in triage and incident management
+Execute manual and automate deployment functions and responsibilities
+Collaborate with application partners, lower level environment management, websphere infrastructure partners, DevOps automation, etc. to remediate code deployment issues
+Perform L1 support by monitoring DevOps incident management system and handling issues or re-assigning to L2
+Manage servers and support nightly batch processes
+Provide Application and Environment Support and Triage issues.
+Manage and Prioritize Defects via ALM Quality Center
+Setup and manage monitors to ensure healthy environments and applications (Windows/Linux WebSphere Platforms)
+
+

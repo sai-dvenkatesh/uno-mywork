@@ -1,0 +1,54 @@
+
+curl -D -u sai-devops:sai@1992 -X POST --data { "fields": { "project": { "key": "Test" }, "summary": "Rest ye merry gentlement.", "description" : "Creating an issue", "issuetype": { "name": "Task" }} -H  "Content-Type: application/json" https://sai-devops.atlassian.net/rest/api/2/issue
+
+
+
+
+
+
+
+
+
+
+
+
+curl -D- -u charlie:charlie -X POST --data { "fields": { "project"  {   "key": "TEST" },  "summary": "REST ye merry gentlemen.", "description": "Creating of an issue using project keys and issue type names using the REST API", "issuetype": {
+          "name": "Bug"        }  } } -H "Content-Type: application/json"  https://sai-devops.atlassian.net/rest/api/2/issue
+  
+ 
+   
+
+   curl \
+   -D- \
+   -u charlie:charlie \
+   -X POST \
+   --data {   \
+    "fields": { \ 
+       "project":  \
+       {  \
+          "key": "TEST" \
+       },
+       "summary": "REST ye merry gentlemen.", \
+       "description": "Creating of an issue using project keys and issue type names using the REST API", \
+       "issuetype": {   \ 
+          "name": "Bug"   \
+       }  \
+   }   \
+}\
+
+   -H "Content-Type: application/json" \  http://localhost:8080/rest/api/2/issue/
+
+
+curl -D- -u sai:sai@1992 -X POST --data-binary "@ a1.sh"  -H "Content-Type: application/json" http://sai-devops.atlassian.net/rest/api/2/issue/createmeta
+
+curl --user sai.dvenkatesh@gmail.com:<api_token> \
+  --header 'Accept: application/json' \
+  --url 'https://your-domain.atlassian.net/rest/api/2/jql/autocompletedata'
+
+curl -D- -u sai-devops:sai@1992 -X POST --data '{"fields":{"project":{"key": "uc_work"},"summary": "REST ye merry gentlemen.","description": "Creating of an issue using project keys and issue type names using the REST API","issuetype": {"name": "Task"}}}' -H "Content-Type: application/json" https://sai-devops.atlassian.net/rest/api/2/issue/
+
+
+
+
+
+

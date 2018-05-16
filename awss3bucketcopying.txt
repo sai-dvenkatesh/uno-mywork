@@ -1,0 +1,11 @@
+Todays Work
+
+1. compress the build folders client_deploy
+2. compress the build folders public_deploy
+3. create a s3 bucket
+4. download and install s3 plugin in jenkins.
+5. configure amazon s3 profiles in the configure system menu of jenkins
+6. provide access key & secret key's and save.
+7. while creating a job, in the configure section select the post build action
+8. provide the destination bucket name, region , sources files to copy. click on save
+9. verify the rar files copied to bucket successfully.

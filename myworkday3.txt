@@ -1,0 +1,49 @@
+initial admin password
+-----------------------
+41d4844f269b42ef8d91de54ba6af619
+
+1. uc_client repository
+	1. cd uc_client
+	2. cd public
+	3. npm install 
+	4. gulp clean
+	5. gulp 
+
+2. uc_client repository
+	1. cd uc_client
+	2. cd client
+	3. npm install
+	4. gulp fullBuild
+
+3. 
+imp
+---
+https://stackoverflow.com/questions/14843696/checkout-multiple-git-repos-into-same-jenkins-workspace
+Checking out more than one repo at a time in a single workspace is not possible with Jenkins + Git Plugin.
+
+4. noted error 4/18/2018 5:42 pm
+H:\jenkinsnewsetup\jenkins\workspace\uc_client\client>npm install  
+npm WARN registry Unexpected warning for https://registry.npmjs.org/: Miscellaneous Warning EINTEGRITY: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA== integrity checksum failed when using sha512: wanted sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA== but got sha1-UWbihkV/AzBgZL5Ul+jbsMPTIIM=. (11423 bytes)
+npm WARN registry Using stale package data from https://registry.npmjs.org/ due to a request error during revalidation.
+
+5. When I have executed the uc_ae_client it successfully triggered the uc_client,
+following batch commands i have defined 
+cd client
+npm install 
+executed successfully but the later commands defined after npm install, gulp clean etc are not executed.
+
+npm WARN The package gulp-install is included as both a dev and production dependency.
+npm WARN The package gulp-sass is included as both a dev and production dependency.  
+
+what happened to uc_client which should have a build file public_deploy.
+1. when I run the job uc_client, it started successfully
+2. cloned repository sucessfully
+3. npm install , which has to install dependencies according to packages.jason file exists showing package-lock.json created and you should commit this file to 
+repository.
+  √ optipng pre-build test passed successfully
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN unocareer@1.0.0 No repository field.
+
+added 944 packages in 82.752s
+Finished: SUCCESS
+4. commands gulp clean and gulp build are not running after that.

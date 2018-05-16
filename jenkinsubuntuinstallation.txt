@@ -1,0 +1,91 @@
+sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+sudo apt-get update -y
+sudo apt-get install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+###install nodejs ############
+sudo apt-get update
+sudo apt-get install nodejs -y
+sudo apt-get install npm -y
+##########to fix this kind of issue ######
+###/usr/bin/env: node: No such file or directory#####
+sudo apt-get install nodejs-legacy -y
+sudo npm install gulp -y
+sudo apt-get install git -y
+####java-home variable ############
+sudo apt-get install  openjdk-8-jdk-headless -y
+#### error i got in jenkins while setting was "/usr/lib/jvm/java-8-openjdk-amd64 doesn’t look like a JDK directory" #####
+##### it was solved after installing following package #############
+sudo apt-get install  openjdk-8-jdk-headless -y
+echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.profile
+echo "export PATH=$JAVA_HOME/bin:$PATH" >> .profile
+. .profile
+
+######## error #########
+##Local gulp not found###
+###Try running: npm install gulp
+sudo npm link gulp
+#########error: return binding.readdir(pathModule._makeLong(path));#########
+###was fixed with the following step #######
+#######this link explains that https://stackoverflow.com/questions/45251645/error-enoent-no-such-file-or-directory-scandir#######
+sudo npm rebuild node-sass
+### to find node.js ##########
+####cd /var/lib/jenkins/workspace/uc_client/public/ ; find ../.. -name node.js ########events.js:141
+issue:
+      throw er; // Unhandled 'error' event
+      ^
+Error: spawn /var/lib/jenkins/workspace/uc_client/public/node_modules/optipng-bin/vendor/optipng ENOENT
+    at exports._errnoException (util.js:870:11)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:178:32)
+    at onErrorNT (internal/child_process.js:344:16)
+    at nextTickCallbackWith2Args (node.js:441:9)
+    at process._tickCallback (node.js:355:17)
+
+fixed
+------
+npm install opting-bin
+
+
+issue
+---------
+events.js:141
+      throw er; // Unhandled 'error' event
+      ^
+Error: spawn /var/lib/jenkins/workspace/uc_client/public/node_modules/jpegtran-bin/vendor/jpegtran ENOENT
+    at exports._errnoException (util.js:870:11)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:178:32)
+    at onErrorNT (internal/child_process.js:344:16)
+    at nextTickCallbackWith2Args (node.js:441:9)
+link followed
+-------------
+https://gist.github.com/welcoMattic/9f0991fa81a80096a3877ee42562c504
+tried
+------
+apt-get install gifsicle
+sudo apt-get install libjpeg-progs
+## but issue was not fixed ##
+# after the above installation i have decided to remove plugins opting* and jpegtran* and the removed ##########
+then worked successfully
+found an error ->
+--------------
+-bash-4.2$ gulp clean
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module 'liftoff'
+tried
+-------
+npm install -g liftoff
+
+
+cd public
+~/.nvm/versions/node/v6.11.5/bin/npm install
+~/.nvm/versions/node/v6.11.5/bin/gulp
+
+cd client
+~/.nvm/versions/node/v6.11.5/bin/npm install
+~/.nvm/versions/node/v6.11.5/bin/gulp fullBuild
+
+

@@ -1,0 +1,8 @@
+SCP publisher plugin stores credentials unencrypted on disk, round-trips in unencrypted form
+SECURITY-374.
+
+SCP publisher plugin stores SSH credentials in the file be.certipost.hudson.plugin.SCPRepositoryPublisher.xml in the Jenkins master home directory. These credentials are stored unencrypted, allowing anyone with local file system access to access them.
+
+Additionally, the credentials are also transmitted in plain text as part of the configuration form. This could result in exposure of credentials through browser extensions, cross-site scripting vulnerabilities, and similar situations.
+
+As of publication of this advisory, there is no fix

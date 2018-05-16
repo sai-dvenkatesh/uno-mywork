@@ -1,0 +1,135 @@
+### Test started @4:06 pm ######
+records to upload 10,0000
+### Recorded system stats before test ######
+## RAM 
+TOTAL - 3790 M
+AVAILABLE - 2903 M
+
+## load avg 
+0.20, 0.33, 0.33
+
+#process id
+ucgitad+  6638  1406  0 12:30 ?        00:00:35 node /var/www/html/test/uc_ae_server/quiz/app.js
+ucgitad+  6688  1406  0 12:30 ?        00:00:05 node /var/www/html/test/uc_api_gateway/src/index.js
+ucgitad+  6828  1406  0 12:31 ?        00:00:05 node /var/www/html/test/uc_authentication_service/server.js
+ucgitad+  6876  1406  0 12:31 ?        00:00:17 node /var/www/html/test/uc_push_notification_manager/src/index.js
+ucgitad+  7004  1406  0 12:31 ?        00:00:26 node /var/www/html/test/uc_server/server.js
+
+# memory usage in % by node
+
+6638 ucgitad+    1.9   
+6688 ucgitad+   1.3    
+6828 ucgitad+   1.4    
+6876 ucgitad+   1.8  	
+7004 ucgitad+   3.5    
+
+# memory usage in % by redis
+pid  memory  procname
+916    2.9   redis-server
+
+# memory usage in % by mongod
+pid  memory  procname
+923   4.1    mongod
+
+# memory usage in % by nginx
+pid    memory  procname
+27843   0.1    nginx
+27844   0.1    nginx
+
+# CPU utilization in % by node
+6638 0.0 node
+6688 0.0 node
+6828 0.0 node
+6876 0.0 node
+7004 0.0 node
+
+# CPU in % by redis
+916 0.0 redis-server
+
+# CPU in % by 
+
+923 0.0 mongod
+
+# cpu in % by nginx
+
+27843 0.0 nginx
+27844 0.0 nginx
+
+
+# disk
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root  7.2G  5.8G  1.4G  81% /
+devtmpfs                 1.9G     0  1.9G   0% /dev
+tmpfs                    1.9G     0  1.9G   0% /dev/shm
+tmpfs                    1.9G  8.6M  1.9G   1% /run
+tmpfs                    1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/sda1                197M  166M   32M  84% /boot
+tmpfs                    380M     0  380M   0% /run/user/1000
+
+########### while importing ####################
+server.js using at max 99.8% cpu
+		at min 8.6% max 11.0 mem
+pm2 occupying around 0.7% cpu and 0.9% mem
+###########################################
+thousand records took 13 minutes of overall
+5 thousand reocrds took 60 minutes approx
+
+######## node stats at importing
+6638 ucgitad+    0.3   1.7
+6688 ucgitad+   1.3    
+6828 ucgitad+   1.4    
+6876 ucgitad+   1.8  	
+7004 ucgitad+   3.5 
+
+#### mongod #########
+cpu 2.0 % mem 4.9%
+cpu 2.7 % mem 5.7% 
+##### redis #######
+cpu 0.3% mem 3.7%
+##############
+recoords creation ended around 5:58 pm
+########### after importing ###################
+
+ top -bn1 | egrep -w "node|mongod|redis|nginx"
+ 6876 ucgitad+  20   0 1122076  62452  11396 S  6.2  1.6   0:42.74 node /var/www/h
+  916 root      20   0  272092 118872   1340 S  0.0  3.1   2:00.41 redis-server
+  923 mongod    20   0 1257328 279824   7652 S  0.0  7.2  11:26.56 mongod
+ 6638 ucgitad+  20   0 1065056  68080  11380 S  0.0  1.8   1:13.66 node /var/www/h
+ 6688 ucgitad+  20   0 1228832  52172  11484 S  0.0  1.3   0:10.52 node /var/www/h
+ 6828 ucgitad+  20   0  981932  50520  11192 S  0.0  1.3   0:09.48 node /var/www/h
+ 7004 ucgitad+  20   0 1347736 178408  11612 S  0.0  4.6  98:33.33 node /var/www/h
+27843 root      20   0  122920   2280    156 S  0.0  0.1   0:00.00 nginx
+27844 nginx     20   0  123308   3604   1056 S  0.0  0.1   0:00.39 nginx
+top -bn1 | egrep -w "node|mongod|redis|nginx"
+  916 root      20   0  272092 118872   1340 S  0.0  3.1   2:00.43 redis-server
+  923 mongod    20   0 1257328 279824   7652 S  0.0  7.2  11:26.63 mongod
+ 6638 ucgitad+  20   0 1065056  68868  11380 S  0.0  1.8   1:13.70 node /var/www/h
+ 6688 ucgitad+  20   0 1228832  52436  11484 S  0.0  1.4   0:10.53 node /var/www/h
+ 6828 ucgitad+  20   0  981932  50784  11192 S  0.0  1.3   0:09.48 node /var/www/h
+ 6876 ucgitad+  20   0 1122076  62196  11396 S  0.0  1.6   0:42.76 node /var/www/h
+ 7004 ucgitad+  20   0 1347736 178288  11612 S  0.0  4.6  98:33.35 node /var/www/h
+27843 root      20   0  122920   2280    156 S  0.0  0.1   0:00.00 nginx
+27844 nginx     20   0  123308   3604   1056 S  0.0  0.1   0:00.39 nginx
+[ucgitadmin@uc-test-server ~]$ top -bn1 | egrep -w "node|mongod|redis|nginx"
+ 7004 ucgitad+  20   0 1348760 179200  11612 S  6.7  4.6  98:33.57 node /var/www/h
+  916 root      20   0  272092 118872   1340 S  0.0  3.1   2:00.62 redis-server
+  923 mongod    20   0 1257328 279824   7652 S  0.0  7.2  11:27.19 mongod
+ 6638 ucgitad+  20   0 1065056  68900  11380 S  0.0  1.8   1:14.03 node /var/www/h
+ 6688 ucgitad+  20   0 1228832  52728  11484 S  0.0  1.4   0:10.58 node /var/www/h
+ 6828 ucgitad+  20   0  981932  50784  11192 S  0.0  1.3   0:09.54 node /var/www/h
+ 6876 ucgitad+  20   0 1122076  62236  11396 S  0.0  1.6   0:42.94 node /var/www/h
+27843 root      20   0  122920   2280    156 S  0.0  0.1   0:00.00 nginx
+27844 nginx     20   0  123308   3604   1056 S  0.0  0.1   0:00.39 nginx
+top -bn1 | egrep -w "node|mongod|redis|nginx"
+  916 root      20   0  272092 118872   1340 S  0.0  3.1   2:00.45 redis-server
+  923 mongod    20   0 1257328 279824   7652 S  0.0  7.2  11:26.69 mongod
+ 6638 ucgitad+  20   0 1065056  68608  11380 S  0.0  1.8   1:13.74 node /var/www/h
+ 6688 ucgitad+  20   0 1228832  52700  11484 S  0.0  1.4   0:10.53 node /var/www/h
+ 6828 ucgitad+  20   0  981932  49992  11192 S  0.0  1.3   0:09.49 node /var/www/h
+ 6876 ucgitad+  20   0 1122076  61684  11396 S  0.0  1.6   0:42.78 node /var/www/h
+ 7004 ucgitad+  20   0 1347736 178816  11612 S  0.0  4.6  98:33.37 node /var/www/h
+27843 root      20   0  122920   2280    156 S  0.0  0.1   0:00.00 nginx
+27844 nginx     20   0  123308   3604   1056 S  0.0  0.1   0:00.39 nginx
+
+ 
+
